@@ -377,23 +377,24 @@ function Marquee() {
 
 export default function ProfileCard() {
   return (
-    <section className="relative py-24 px-4 sm:px-6 bg-gradient-to-b from-background via-background/95 to-background flex items-center justify-center overflow-hidden">
-      {/* Dynamic Ambient Background Glows */}
-      <div className="absolute top-1/4 -right-32 h-96 w-96 rounded-full bg-gold/10 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 -left-32 h-96 w-96 rounded-full bg-gold/5 blur-[100px] pointer-events-none" />
+    <section className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6 bg-gradient-to-b from-background via-background/95 to-background flex items-center justify-center overflow-hidden min-h-screen">
+      {/* Dynamic Ambient Background Glows - Scaled down for mobile */}
+      <div className="absolute top-1/4 -right-32 h-64 w-64 sm:h-96 sm:w-96 rounded-full bg-gold/10 blur-[80px] sm:blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -left-32 h-64 w-64 sm:h-96 sm:w-96 rounded-full bg-gold/5 blur-[70px] sm:blur-[100px] pointer-events-none" />
 
       <div className="mx-auto w-full max-w-5xl relative z-10">
-        <div className="relative backdrop-blur-md bg-surface/40 rounded-3xl p-8 sm:p-12 border border-white/[0.06] shadow-[0_24px_60px_-15px_rgba(0,0,0,0.4)] overflow-hidden transition-all duration-500 hover:border-gold/20 group">
+        <div className="relative backdrop-blur-md bg-surface/40 rounded-2xl sm:rounded-3xl p-6 sm:p-10 md:p-12 border border-white/[0.06] shadow-[0_24px_60px_-15px_rgba(0,0,0,0.4)] overflow-hidden transition-all duration-500 hover:border-gold/20 group">
           
           {/* Subtle internal corner accent glow */}
           <div className="absolute -top-12 -right-12 h-48 w-48 rounded-full bg-gradient-to-br from-gold/20 to-transparent blur-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
           
-          <div className="grid lg:grid-cols-[auto_1fr_auto] gap-10 items-center relative">
+          {/* Layout Grid: Centered stack on mobile, sleek inline row on desktop */}
+          <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] gap-8 lg:gap-10 items-center relative text-center lg:text-left">
             
             {/* Premium Avatar Container */}
-            <div className="relative mx-auto lg:mx-0">
+            <div className="relative mx-auto lg:mx-0 shrink-0">
               <div className="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-gold via-gold/40 to-transparent blur-md opacity-40 group-hover:opacity-70 transition-all duration-700 group-hover:scale-105" />
-              <div className="relative h-36 w-36 sm:h-40 sm:w-40 rounded-full p-1 bg-gradient-to-b from-white/[0.1] to-transparent">
+              <div className="relative h-28 w-28 sm:h-36 sm:w-36 md:h-40 md:w-40 rounded-full p-1 bg-gradient-to-b from-white/[0.1] to-transparent">
                 <img 
                   src={logo} 
                   alt="F_BLOCK_14 logo" 
@@ -403,7 +404,7 @@ export default function ProfileCard() {
             </div>
             
             {/* Profile Information */}
-            <div className="text-center lg:text-left">
+            <div className="w-full">
               <a 
                 href="https://instagram.com/f_block_14" 
                 target="_blank" 
@@ -411,15 +412,15 @@ export default function ProfileCard() {
                 className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.05] text-muted-foreground hover:text-gold text-xs font-medium tracking-wider uppercase transition-all duration-300 backdrop-blur-sm"
               >
                 <Instagram className="h-3.5 w-3.5 text-gold" /> 
-                <span>instagram.com/f_block_14</span>
+                <span className="truncate max-w-[180px] sm:max-w-none">instagram.com/f_block_14</span>
                 <ArrowUpRight className="h-3 w-3 opacity-60" />
               </a>
 
-              <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-foreground via-foreground to-foreground/80 mt-4 font-display">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-foreground via-foreground to-foreground/80 mt-4 font-display">
                 f_block_14
               </h2>
               
-              <p className="mt-3 text-muted-foreground/90 max-w-xl text-base leading-relaxed mx-auto lg:mx-0">
+              <p className="mt-3 text-muted-foreground/90 max-w-xl text-sm sm:text-base leading-relaxed mx-auto lg:mx-00">
                 Shivamogga's premium local biz channel · cinematic reels · run by{' '}
                 <a 
                   href="https://www.instagram.com/franklin.franky.589?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
@@ -431,37 +432,37 @@ export default function ProfileCard() {
                 </a>
               </p>
               
-              {/* Stats Grid */}
-              <div className="mt-8 flex justify-center lg:justify-start gap-8 border-t border-white/[0.06] pt-6">
-                <div>
-                  <div className="text-2xl font-bold tracking-tight text-foreground">950+</div>
-                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground/60 mt-0.5">posts</div>
+              {/* Stats Grid - Fluid wrapping layout for all sizes */}
+              <div className="mt-6 sm:mt-8 flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-4 sm:gap-8 border-t border-white/[0.06] pt-6">
+                <div className="min-w-[70px] sm:min-w-0">
+                  <div className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">950+</div>
+                  <div className="text-[10px] sm:text-xs font-medium uppercase tracking-widest text-muted-foreground/60 mt-0.5">posts</div>
                 </div>
-                <div className="border-l border-white/[0.06] pl-8">
-                  <div className="text-2xl font-bold tracking-tight text-foreground bg-clip-text bg-gradient-to-r from-gold via-white to-white">100K+</div>
-                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground/60 mt-0.5">followers</div>
+                <div className="sm:border-l sm:border-white/[0.06] sm:pl-8 min-w-[70px] sm:min-w-0">
+                  <div className="text-xl sm:text-2xl font-bold tracking-tight text-foreground bg-clip-text bg-gradient-to-r from-gold via-white to-white">100K+</div>
+                  <div className="text-[10px] sm:text-xs font-medium uppercase tracking-widest text-muted-foreground/60 mt-0.5">followers</div>
                 </div>
-                <div className="border-l border-white/[0.06] pl-8">
-                  <div className="text-2xl font-bold tracking-tight text-foreground">917</div>
-                  <div className="text-xs font-medium uppercase tracking-widest text-muted-foreground/60 mt-0.5">following</div>
+                <div className="sm:border-l sm:border-white/[0.06] sm:pl-8 min-w-[70px] sm:min-w-0">
+                  <div className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">917</div>
+                  <div className="text-[10px] sm:text-xs font-medium uppercase tracking-widest text-muted-foreground/60 mt-0.5">following</div>
                 </div>
               </div>
             </div>
             
-            {/* Premium CTA Buttons */}
-            <div className="flex sm:flex-row lg:flex-col gap-3 w-full lg:w-48 mutual-justify">
+            {/* Premium CTA Buttons - Full width stack on mobile, inline rows on desktop */}
+            <div className="flex flex-col sm:flex-row lg:flex-col gap-3 w-full lg:w-48 mt-2 lg:mt-0">
               <a 
                 href="https://instagram.com/f_block_14" 
                 target="_blank" 
                 rel="noreferrer" 
-                className="flex-1 inline-flex items-center justify-center gap-2 bg-gradient-gold text-primary-foreground px-5 py-3.5 rounded-xl font-semibold shadow-[0_4px_20px_rgba(212,175,55,0.25)] hover:shadow-[0_4px_30px_rgba(212,175,55,0.4)] transition-all duration-300 hover:-translate-y-0.5"
+                className="flex-1 inline-flex items-center justify-center gap-2 bg-gradient-gold text-primary-foreground px-5 py-3.5 rounded-xl font-semibold shadow-[0_4px_20px_rgba(212,175,55,0.25)] hover:shadow-[0_4px_30px_rgba(212,175,55,0.4)] transition-all duration-300 hover:-translate-y-0.5 text-sm sm:text-base"
               >
                 <UserPlus className="h-4 w-4" />
                 <span>Follow</span>
               </a>
               <a 
                 href="#enquiry" 
-                className="flex-1 inline-flex items-center justify-center gap-2 bg-white/[0.03] hover:bg-white/[0.08] px-5 py-3.5 rounded-xl font-medium border border-white/[0.08] hover:border-white/[0.15] text-foreground transition-all duration-300 hover:-translate-y-0.5 backdrop-blur-sm"
+                className="flex-1 inline-flex items-center justify-center gap-2 bg-white/[0.03] hover:bg-white/[0.08] px-5 py-3.5 rounded-xl font-medium border border-white/[0.08] hover:border-white/[0.15] text-foreground transition-all duration-300 hover:-translate-y-0.5 backdrop-blur-sm text-sm sm:text-base"
               >
                 <MessageSquare className="h-4 w-4 text-muted-foreground" />
                 <span>Message</span>
@@ -474,35 +475,73 @@ export default function ProfileCard() {
     </section>
   );
 }
-
 function Reels() {
   return (
-    <section id="reels" className="relative py-24 px-4 sm:px-6">
+    <section id="reels" className="relative py-12 sm:py-16 md:py-24 px-4 sm:px-6">
       <div className="mx-auto max-w-7xl">
-        <SectionHeader eyebrow="Top Reels" title="Stories that travel" desc="Hand-picked drops from the feed — the ones the city couldn't stop sharing." />
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-12">
+        <SectionHeader 
+          eyebrow="Top Reels" 
+          title="Stories that travel" 
+          desc="Hand-picked drops from the feed — the ones the city couldn't stop sharing." 
+        />
+        
+        {/* Adaptive Dynamic Grid System */}
+        <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mt-10 md:mt-12">
           {reels.map((r, i) => (
-            <article key={i} className="group relative aspect-[9/14] rounded-3xl overflow-hidden shadow-soft border border-border/60">
-              <img src={r.img} alt={r.title} loading="lazy" width={720} height={1024}
-                className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent" />
-              <div className="absolute top-3 left-3 right-3 flex justify-between">
-                <span className="glass text-xs px-2.5 py-1 rounded-full text-gold">{r.tag}</span>
-                <span className="glass text-xs px-2.5 py-1 rounded-full inline-flex items-center gap-1"><Eye className="h-3 w-3" /> {r.views}</span>
-              </div>
-              <button aria-label="Play" className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                <span className="h-14 w-14 rounded-full bg-gradient-gold flex items-center justify-center shadow-gold">
-                  <Play className="h-6 w-6 text-primary-foreground fill-current" />
+            <a
+              key={i}
+              href={r.url}
+              target="_blank"
+              rel="noreferrer"
+              className="group relative aspect-[9/14] rounded-2xl sm:rounded-3xl overflow-hidden shadow-soft border border-border/60 block bg-muted transition-transform duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gold/50"
+            >
+              {/* Thumbnail Image */}
+              <img 
+                src={r.img} 
+                alt={r.title} 
+                loading="lazy" 
+                width={720} 
+                height={1024}
+                className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110" 
+              />
+              
+              {/* Dynamic Gradient Tint Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent transition-opacity duration-300 group-hover:via-ink/15" />
+              
+              {/* Top Dynamic Row Badges */}
+              <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 z-10">
+                <span className="glass text-[10px] sm:text-xs px-2.5 py-1 rounded-full text-gold font-medium uppercase tracking-wider truncate max-w-[100px]">
+                  {r.tag}
                 </span>
-              </button>
-              <div className="absolute bottom-0 inset-x-0 p-4">
-                <h3 className="text-base font-semibold leading-tight">{r.title}</h3>
-                <div className="mt-2 flex items-center gap-3 text-xs text-muted-foreground">
-                  <span className="inline-flex items-center gap-1"><Heart className="h-3 w-3 text-gold" /> 12K</span>
-                  <span className="inline-flex items-center gap-1"><Send className="h-3 w-3 text-gold" /> 3.2K</span>
+                <span className="glass text-[10px] sm:text-xs px-2.5 py-1 rounded-full inline-flex items-center gap-1 shrink-0">
+                  <Eye className="h-3 w-3 text-gold/80" /> {r.views}
+                </span>
+              </div>
+              
+              {/* Premium Hover Action Button Play Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <span className="h-12 w-12 sm:h-14 sm:w-14 rounded-full bg-gradient-gold flex items-center justify-center shadow-gold transform scale-90 group-hover:scale-100 transition-transform duration-300">
+                  <Play className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground fill-current ml-0.5" />
+                </span>
+              </div>
+              
+              {/* Footer text panel layout */}
+              <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5 z-10 text-left">
+                <h3 className="text-sm sm:text-base font-semibold leading-snug text-white line-clamp-2 group-hover:text-gold transition-colors duration-300">
+                  {r.title}
+                </h3>
+                
+                {/* Simulated engagement stats indicators */}
+                <div className="mt-2.5 flex items-center gap-3 text-[11px] sm:text-xs text-muted-foreground/90">
+                  <span className="inline-flex items-center gap-1 bg-white/[0.04] px-2 py-0.5 rounded-md border border-white/[0.03]">
+                    <Heart className="h-3 w-3 text-gold fill-current" /> 12K
+                  </span>
+                  <span className="inline-flex items-center gap-1 bg-white/[0.04] px-2 py-0.5 rounded-md border border-white/[0.03]">
+                    <Send className="h-3 w-3 text-gold" /> 3.2K
+                  </span>
                 </div>
               </div>
-            </article>
+            </a>
           ))}
         </div>
       </div>
